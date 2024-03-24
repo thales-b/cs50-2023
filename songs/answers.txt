@@ -1,0 +1,3 @@
+-I would divide the sum of each stat by 100 and take the maximum.
+
+-The number of songs and the limited timme window may result in unrepresentative results.

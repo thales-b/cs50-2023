@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-nav {
+    justify-content: flex-end;
+}
+
+.navbar-nav .nav-link {
+    margin-left: 10px;
+}
+
+section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>Trivia!</title>
+    <style>
+        .correct {
+            background-color: green;
+        }
+
+        .incorrect {
+            background-color: red;
+        }
+    </style>
+    <script>
+        function checkMultipleChoiceAnswer(selectedButton) {
+            var buttons = document.getElementsByClassName('multiple-choice-button');
+
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true; // Disable all buttons
+
+                if (buttons[i] === selectedButton) {
+                    if (buttons[i].getAttribute('data-is-correct') === 'true') {
+                        buttons[i].classList.add('correct');
+                        showResultText("Correct!", buttons[i]);
+                    } else {
+                        buttons[i].classList.add('incorrect');
+                        showResultText("Incorrect", buttons[i]);
+                    }
+                }
+            }
+        }
+
+        function showResultText(text, button) {
+            var resultText = document.createElement('p');
+            resultText.innerText = text;
+            button.parentNode.appendChild(resultText);
+        }
+
+        function checkFreeResponseAnswer() {
+            var userInput = document.getElementById('free-response-input');
+            var answer = userInput.value;
+
+            if (answer === "correct answer") {
+                userInput.classList.add('correct');
+                showResultText("Correct!", userInput);
+            } else {
+                userInput.classList.add('incorrect');
+                showResultText("Incorrect", userInput);
+            }
+
+            userInput.disabled = true;
+        }
+    </script>
+</head>
+<body>
+<div class="header">
+    <h1>Trivia!</h1>
+</div>
+
+<div class="container">
+    <div class="section">
+        <h2>Part 1: Multiple Choice</h2>
+        <hr>
+        <h3>What is the capital of France?</h3>
+        <button class="multiple-choice-button" onclick="checkMultipleChoiceAnswer(this)" data-is-correct="false">New York</button>
+        <button class="multiple-choice-button" onclick="checkMultipleChoiceAnswer(this)" data-is-correct="false">London</button>
+        <button class="multiple-choice-button" onclick="checkMultipleChoiceAnswer(this)" data-is-correct="true">Paris</button>
+    </div>
+
+    <div class="section">
+        <h2>Part 2: Free Response</h2>
+        <hr>
+        <h3>What is the capital of Canada?</h3>
+        <input type="text" id="free-response-input">
+        <button onclick="checkFreeResponseAnswer()">Confirm</button>
+    </div>
+</div>
+</body>
+</html>
